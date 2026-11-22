@@ -3,69 +3,189 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>힘내라 안전관리자</title>
-<meta name="description" content="현장 점검 동의서·교육 명단 서명부터 사진대지·보고서까지, 안전관리 서류를 폰 하나로 정리하는 앱">
+<title>힘내라 안전관리자 — 현장 서명·사진·보고서를 폰 하나로</title>
+<meta name="description" content="점검 동의서·교육 명단 전자서명, 현장노트 카메라·사진대지, 선임 현황·달력·자격증 관리까지. 현장 안전관리자를 위한 무료 앱.">
+<meta property="og:title" content="힘내라 안전관리자">
+<meta property="og:description" content="현장 서명·사진·보고서를 폰 하나로">
+<meta property="og:image" content="icon.png">
 <link rel="icon" href="icon.png">
 <style>
-:root{--navy:#1f3a5f;--ink:#1a1d23;--sub:#5b6472;--bg:#f4f6f9;--card:#fff;--line:#e3e7ee;--acc:#ef8a1f}
-@media (prefers-color-scheme: dark){:root{--ink:#e9edf3;--sub:#a8b1bf;--bg:#12161c;--card:#1b212a;--line:#2a323d}}
+:root{--navy:#14253d;--navy2:#1f3a5f;--orange:#f28c1c;--ink:#16202c;--sub:#5d6877;--bg:#f5f6f8;--card:#fff;--line:#e4e8ee}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;line-height:1.6}
-.wrap{max-width:880px;margin:0 auto;padding:0 16px}
-header{background:var(--navy);color:#fff;padding:40px 0 32px}
-.hero{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
-.hero img{width:96px;height:96px;border-radius:22px;box-shadow:0 4px 14px #0004}
-.hero h1{margin:0;font-size:30px;line-height:1.25}
-.hero p{margin:6px 0 0;opacity:.9}
-.btn{display:inline-block;margin-top:18px;background:var(--acc);color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:10px}
-.btn.off{background:#ffffff26;cursor:default}
-main{padding:24px 0 8px}
-.banner{width:100%;border-radius:14px;display:block;margin:0 0 20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
-.card h3{margin:0 0 6px;font-size:17px;color:var(--acc)}
-.card p{margin:0;color:var(--sub);font-size:15px}
-h2{font-size:20px;margin:28px 0 12px}
-.info{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 18px}
-.info div{padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap}
-.info div:last-child{border-bottom:0}
-.info b{min-width:110px}
-.info a{color:inherit}
-footer{color:var(--sub);font-size:13px;text-align:center;padding:28px 0 36px}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+/* top bar */
+.top{position:sticky;top:0;z-index:5;background:rgba(20,37,61,.92);backdrop-filter:blur(8px);color:#fff}
+.top .wrap{display:flex;align-items:center;gap:10px;height:56px}
+.top img{width:30px;height:30px;border-radius:8px}
+.top b{font-size:16px;letter-spacing:-.2px}
+.top nav{margin-left:auto;display:flex;gap:18px;font-size:14px}
+.top nav a{text-decoration:none;opacity:.85}
+.top nav a:hover{opacity:1}
+@media(max-width:620px){.top nav{display:none}}
+/* hero */
+.hero{background:radial-gradient(1200px 500px at 85% 20%,#2b4f7e 0,transparent 60%),linear-gradient(160deg,var(--navy) 0,#1b3352 100%);color:#fff;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding-top:56px;padding-bottom:0}
+.tag{display:inline-block;background:rgba(242,140,28,.16);color:#ffb766;border:1px solid rgba(242,140,28,.45);padding:4px 12px;border-radius:99px;font-size:13px;font-weight:700}
+.hero h1{font-size:46px;line-height:1.2;margin:16px 0 14px;letter-spacing:-1px}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero p.lead{font-size:18px;opacity:.88;margin:0 0 26px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:12px;font-weight:800;text-decoration:none;font-size:16px}
+.btn.main{background:var(--orange);color:#fff;box-shadow:0 8px 20px rgba(242,140,28,.35)}
+.btn.ghost{border:1px solid rgba(255,255,255,.35);color:#fff}
+.note{font-size:13px;opacity:.7;margin-top:10px}
+.stats{display:flex;gap:26px;margin:30px 0 46px;flex-wrap:wrap}
+.stats div b{display:block;font-size:22px}
+.stats div span{font-size:13px;opacity:.7}
+.phones{position:relative;height:520px}
+.phone{position:absolute;width:236px;border-radius:30px;background:#0b1320;padding:9px;box-shadow:0 24px 50px rgba(0,0,0,.45)}
+.phone img{width:100%;display:block;border-radius:22px}
+.phone.a{left:8%;top:30px;transform:rotate(-5deg)}
+.phone.b{left:46%;top:0;transform:rotate(4deg);z-index:2}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero h1{font-size:36px}.phones{height:420px}.phone{width:190px}.phone.a{left:4%}.phone.b{left:auto;right:4%}}
+/* sections */
+section{padding:70px 0}
+.kicker{color:var(--orange);font-weight:800;font-size:14px;letter-spacing:.5px}
+h2{font-size:32px;line-height:1.3;margin:8px 0 12px;letter-spacing:-.6px}
+.subt{color:var(--sub);font-size:17px;margin:0 0 30px}
+.who{display:flex;flex-wrap:wrap;gap:10px}
+.who span{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:9px 16px;font-weight:700;font-size:15px}
+.feat{display:grid;grid-template-columns:1fr 260px;gap:46px;align-items:center;padding:34px 0;border-top:1px solid var(--line)}
+.feat:nth-of-type(even){grid-template-columns:260px 1fr}
+.feat:nth-of-type(even) .shot{order:-1}
+.feat h3{font-size:24px;margin:6px 0 10px;letter-spacing:-.4px}
+.feat ul{margin:0;padding-left:18px;color:var(--sub)}
+.feat li{margin:4px 0}
+.num{display:inline-flex;width:30px;height:30px;border-radius:9px;background:var(--navy2);color:#fff;font-weight:800;align-items:center;justify-content:center;font-size:14px}
+.shot{display:flex;justify-content:center}.shot .phone{position:relative;width:240px;transform:none}
+@media(max-width:760px){.feat,.feat:nth-of-type(even){grid-template-columns:1fr}.feat:nth-of-type(even) .shot{order:0}.shot{max-width:260px;margin:0 auto}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.card b{display:block;font-size:17px;margin-bottom:4px}
+.card span{color:var(--sub);font-size:15px}
+.band{background:var(--navy);color:#fff}
+.band .subt{color:#c6d2e2}
+.band .card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
+.band .card span{color:#c6d2e2}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:10px}
+summary{font-weight:800;cursor:pointer;font-size:16px}
+details p{color:var(--sub);margin:10px 0 0}
+.end{background:linear-gradient(135deg,var(--orange),#e06d0c);color:#fff;border-radius:24px;padding:44px 30px;text-align:center;margin:0 0 70px}
+.end h2{margin-top:0}
+.end .btn{background:#fff;color:#c45a00}
+footer{background:#0e1a2b;color:#9fb0c6;font-size:14px;padding:34px 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
+footer a{text-decoration:none}
+footer .sp{margin-left:auto}
 </style>
 </head>
 <body>
-<header><div class="wrap">
-  <div class="hero">
-    <img src="icon.png" alt="힘내라 안전관리자 아이콘">
-    <div>
-      <h1>힘내라 안전관리자</h1>
-      <p>점검 동의서·교육 명단 서명부터 사진대지·보고서까지,<br>안전관리 서류를 폰 하나로 정리해요.</p>
+<div class="top"><div class="wrap">
+  <img src="icon.png" alt=""><b>힘내라 안전관리자</b>
+  <nav><a href="#features">기능</a><a href="#more">관리 기능</a><a href="#faq">자주 묻는 질문</a></nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <span class="tag">현장 안전관리자를 위한 앱</span>
+    <h1>종이 서명부터 보고서까지,<br><em>폰 하나로</em> 끝내세요</h1>
+    <p class="lead">점검 동의서·교육 명단 전자서명, 현장 사진 노트판과 사진대지, 선임·교육·업무 관리까지 한 앱에 담았어요.</p>
+    <div class="cta">
+      <a class="btn main" href="#download">Google Play 출시 예정</a>
+      <a class="btn ghost" href="#features">기능 둘러보기</a>
+    </div>
+    <div class="note">안드로이드 · 회원가입 없음 · 자료는 내 폰에만 저장</div>
+    <div class="stats">
+      <div><b>서명</b><span>점검표·동의서·명단</span></div>
+      <div><b>사진</b><span>노트판·사진대지</span></div>
+      <div><b>관리</b><span>선임·교육·업무·당직</span></div>
     </div>
   </div>
-  <a class="btn off" id="store">Google Play 출시 준비 중</a>
+  <div class="phones">
+    <div class="phone a"><img src="img/note.jpg" alt="현장노트 카메라 화면"></div>
+    <div class="phone b"><img src="img/home.jpg" alt="앱 첫 화면"></div>
+  </div>
 </div></header>
-<main class="wrap">
-  <img class="banner" src="feature.jpg" alt="힘내라 안전관리자 소개 그림">
-  <p>건설·시설·아파트 등 여러 현장에서 일하는 안전관리자를 위한 앱입니다. 현장에서 일하는 전기안전관리자가 직접 필요해서 만들었어요.</p>
-  <h2>주요 기능</h2>
+
+<section><div class="wrap">
+  <div class="kicker">이런 분께 맞아요</div>
+  <h2>현장에서 직접 일하는 사람이 필요해서 만들었어요</h2>
+  <p class="subt">현장에서 일하는 전기안전관리자가 매일 쓰려고 만든 앱이에요. 아파트·건설·시설 등 여러 현장에서 쓸 수 있어요.</p>
+  <div class="who"><span>전기안전관리자</span><span>소방안전관리자</span><span>시설·설비 관리자</span><span>아파트 관리사무소</span><span>건설 현장 안전 담당</span><span>안전교육 담당자</span></div>
+</div></section>
+
+<section id="features" style="padding-top:0"><div class="wrap">
+  <div class="kicker">핵심 기능</div>
+  <h2>서명 · 사진 · 보고서</h2>
+
+  <div class="feat">
+    <div><span class="num">1</span><h3>전자서명 — 점검표·동의서·교육 명단</h3>
+      <ul><li>소방·전기 점검표 기본 양식 제공, 내 PDF·사진 양식도 불러오기</li>
+      <li>대리인 서명과 관계 표시, 양호·미흡 점검 결과 입력</li>
+      <li>A4 PDF·이미지로 저장하고 카카오톡·메일로 바로 공유</li></ul></div>
+    <div class="shot"><div class="phone"><img src="img/sign.jpg" alt="서명 받기 화면" loading="lazy"></div></div>
+  </div>
+
+  <div class="feat">
+    <div><span class="num">2</span><h3>현장노트 카메라와 사진대지</h3>
+      <ul><li>사진에 현장명·위치·일자 노트판과 동그라미·화살표 스티커</li>
+      <li>조치 전·중·후 A4 사진대지를 자동으로 배치</li>
+      <li>결재란 위치, 한 장에 넣을 사진 수, 가로·세로 선택</li></ul></div>
+    <div class="shot"><div class="phone"><img src="img/sheet.jpg" alt="사진대지 만들기 화면" loading="lazy"></div></div>
+  </div>
+
+  <div class="feat">
+    <div><span class="num">3</span><h3>서명 현황판과 미흡 조치</h3>
+      <ul><li>동·층·호수별, 명단별로 서명한 곳과 남은 곳을 한눈에</li>
+      <li>부재·거부·재방문 표시와 다시 갈 날짜 알림</li>
+      <li>미흡 세대 조치 사진 관리, 결과 집계표·보고서 PDF</li></ul></div>
+    <div class="shot"><div class="phone"><img src="img/home.jpg" alt="첫 화면" loading="lazy"></div></div>
+  </div>
+</div></section>
+
+<section id="more" class="band"><div class="wrap">
+  <div class="kicker">관리 기능</div>
+  <h2>선임부터 교육·업무·당직까지</h2>
+  <p class="subt">현장 안전관리에 필요한 일정과 기한을 달력 하나로 챙겨요.</p>
   <div class="grid">
-    <div class="card"><h3>전자서명</h3><p>소방·전기 점검표, 동의서, 교육 명단에 폰 화면으로 바로 서명받고 A4 서류로 저장해요.</p></div>
-    <div class="card"><h3>서명 현황판</h3><p>동·층·호수별, 명단별로 서명한 곳과 남은 곳, 부재·재방문을 한눈에 확인해요.</p></div>
-    <div class="card"><h3>현장노트 카메라</h3><p>사진에 노트판·동그라미·화살표를 넣고, 조치 전·중·후 A4 사진대지를 만들어요.</p></div>
-    <div class="card"><h3>미흡 조치·보고서</h3><p>미흡 세대만 모아 조치 사진과 함께 관리하고, 집계표·보고서를 PDF로 만들어요.</p></div>
-    <div class="card"><h3>선임 현황·달력·업무</h3><p>안전관리자 선임 현황, 정기 점검, 업무 내역, 당직, 업체 연락처를 달력과 함께 관리해요.</p></div>
-    <div class="card"><h3>자격증·교육</h3><p>사람별 자격증 만료일과 법정 교육 기한을 알려 줘요.</p></div>
+    <div class="card"><b>선임 현황</b><span>현장별 선임·해임 이력과 공석, 재선임 기한 알림</span></div>
+    <div class="card"><b>달력·업무</b><span>업무 내역, 정기 점검, 일정, 업체 연락처를 색깔별 달력으로</span></div>
+    <div class="card"><b>당직</b><span>순번대로 예상 당직 자동 기입, 필요 없으면 숨기기</span></div>
+    <div class="card"><b>자격증·교육</b><span>사람별 자격증 만료일과 법정 교육 기한 알림</span></div>
   </div>
-  <h2>앱 정보</h2>
-  <div class="info">
-    <div><b>개발자</b><span>힘내라안전관리자</span></div>
-    <div><b>문의</b><a href="mailto:asdv7609@gmail.com">asdv7609@gmail.com</a></div>
-    <div><b>개인정보처리방침</b><a href="https://blog.naver.com/mode100/224476868078" target="_blank" rel="noopener">보기</a></div>
-    <div><b>저장 방식</b><span>서명·사진 자료는 회원가입 없이 사용자의 폰에만 저장돼요.</span></div>
-    <div><b>광고</b><span>앱에 광고(Google AdMob)가 포함되어 있어요.</span></div>
+  <div class="grid" style="margin-top:22px;grid-template-columns:repeat(auto-fit,minmax(200px,240px));justify-content:center">
+    <div class="phone" style="position:relative"><img src="img/appoint.jpg" alt="선임 현황 화면" loading="lazy"></div>
+    <div class="phone" style="position:relative"><img src="img/cal.jpg" alt="달력·업무 화면" loading="lazy"></div>
+    <div class="phone" style="position:relative"><img src="img/edu.jpg" alt="자격증·교육 화면" loading="lazy"></div>
   </div>
-</main>
-<footer>© 2026 힘내라안전관리자</footer>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <div class="kicker">자주 묻는 질문</div>
+  <h2>궁금한 점</h2>
+  <details><summary>무료인가요?</summary><p>네, 무료로 쓸 수 있어요. 앱 안에 광고(Google AdMob)가 나와요.</p></details>
+  <details><summary>회원가입이 필요한가요? 자료는 어디에 저장되나요?</summary><p>회원가입 없이 바로 써요. 서명·사진·보고서는 서버로 보내지 않고 사용자의 폰에만 저장돼요. 백업 파일로 새 폰에 옮길 수 있어요.</p></details>
+  <details><summary>전자서명이 법적 효력이 있나요?</summary><p>앱에서 받은 서명의 법적 효력은 검증되지 않았어요. 중요한 서류는 소속 기관의 기준을 확인하고 사용해 주세요.</p></details>
+  <details><summary>아이폰도 되나요?</summary><p>지금은 안드로이드(Google Play)만 지원해요.</p></details>
+</div></section>
+
+<div class="wrap" id="download">
+  <div class="end">
+    <h2>곧 Google Play에서 만나요</h2>
+    <p>지금은 비공개 테스트 중이에요. 정식 출시되면 여기에서 바로 받을 수 있어요.</p>
+    <a class="btn" href="mailto:asdv7609@gmail.com">출시 알림·문의 메일 보내기</a>
+  </div>
+</div>
+
+<footer><div class="wrap">
+  <b style="color:#fff">힘내라 안전관리자</b>
+  <span>개발자: 힘내라안전관리자</span>
+  <a href="mailto:asdv7609@gmail.com">문의 asdv7609@gmail.com</a>
+  <a href="https://blog.naver.com/mode100/224476868078" target="_blank" rel="noopener">개인정보처리방침</a>
+  <span class="sp">© 2026 힘내라안전관리자</span>
+</div></footer>
 </body>
 </html>
