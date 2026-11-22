@@ -9,7 +9,7 @@ window.EXCEL_POSTS = [
     title: "전기설비 점검결과 기록표",
     category: "전기 점검",
     type: "엑셀 (.xlsm)",
-    img: "elec-check.jpg",
+    img: "elec-check.jpg", imgs: ["elec-check.jpg"],
     summary: "측정값만 입력하면 설비별 A4 기록표·월 총괄표·지난달 비교까지 자동으로 만들어지는 월간 점검 기록표",
     intro: "매달 설비마다 기록표를 새로 만들고, 지난달 값과 비교하느라 파일을 뒤지고 계셨다면 이 파일 하나로 끝납니다. 숫자만 입력하면 A4 한 장짜리 기록표가 완성되고, 모든 달의 기록이 자동으로 쌓입니다.",
     features: [
@@ -28,7 +28,7 @@ window.EXCEL_POSTS = [
     title: "하자관리대장 + 사진대장 자동 만들기",
     category: "하자 관리",
     type: "엑셀 (.xlsm)",
-    img: "defect.jpg",
+    img: "defect.jpg", imgs: ["defect.jpg", "defect-2.jpg"],
     summary: "하자 DB 한 곳에만 입력하면 공종별 관리대장·사진대장·팀별/분기/연간 현황표가 모두 자동으로 만들어지는 파일",
     intro: "공종마다 따로 있는 하자대장, 사진대장, 매달 올리는 현황표를 일일이 맞추는 일은 이제 그만하셔도 됩니다. 하자 내용을 한 줄씩 입력하면 나머지 대장과 보고서는 이 파일이 만들어 줍니다.",
     features: [
@@ -47,7 +47,7 @@ window.EXCEL_POSTS = [
     title: "안전·운영 필수 설비 누락 조치 요청 보고서",
     category: "현장 점검",
     type: "엑셀 (.xlsm)",
-    img: "missing-report.jpg",
+    img: "missing-report.jpg", imgs: ["missing-report.jpg"],
     summary: "현장점검에서 찾은 누락·미비 사항을 한 줄씩 적으면 대시보드 보고서와 사진대장이 자동으로 완성되는 파일",
     intro: "현장을 돌며 찾은 문제를 정리해 시공사·발주처에 조치를 요청할 때, 표 만들고 사진 붙이고 건수 세는 시간을 줄여 드립니다. 입력만 하면 바로 제출할 수 있는 보고서가 나옵니다.",
     features: [
@@ -65,7 +65,7 @@ window.EXCEL_POSTS = [
     title: "계전기 및 차단기 동작시험기록표",
     category: "전기 시험",
     type: "엑셀 (.xlsx)",
-    img: "relay.jpg",
+    img: "relay.jpg", imgs: ["relay.jpg"],
     summary: "정정값과 CT비만 넣으면 최소동작치·VI 곡선 동작시간·차단용량·단락전류가 자동 계산되는 계전기 시험 기록표",
     intro: "보호계전기 시험 기록표를 쓸 때마다 계산기를 두드리셨다면, 이제 입력표에 숫자만 넣으세요. 계산은 엑셀이 하고, 기록표 양식은 자동으로 채워집니다. 매크로가 없어 어느 PC에서나 바로 열립니다.",
     features: [
@@ -83,7 +83,7 @@ window.EXCEL_POSTS = [
     title: "전기요금 고지서 관리 + 월간·연간 보고서",
     category: "요금 관리",
     type: "엑셀 (.xlsm)",
-    img: "elec-bill.jpg",
+    img: "elec-bill.jpg", imgs: ["elec-bill.jpg", "elec-bill-2.jpg"],
     summary: "고지서 숫자만 옮겨 적으면 계량기별 요금 계산과 월간·연간·연도별 비교 보고서(그래프 포함)가 자동으로 나오는 파일",
     intro: "계량기가 여러 개인 현장의 전기요금을 매달 정리하고 보고하는 일을 자동으로 바꿔 드립니다. 전월 값은 버튼 하나로 불러오고, 보고서는 연도와 월만 고르면 완성됩니다.",
     features: [
@@ -101,7 +101,7 @@ window.EXCEL_POSTS = [
     title: "수도요금 고지서 관리 + 월간·연간 보고서",
     category: "요금 관리",
     type: "엑셀 (.xlsm)",
-    img: "water-bill.jpg",
+    img: "water-bill.jpg", imgs: ["water-bill.jpg", "water-bill-2.jpg"],
     summary: "지침만 입력하면 상수도·하수도(구간 요금)·물이용부담금·자동납부 할인까지 계산하고 고지서와 대조해 주는 파일",
     intro: "하수도 구간 요금, 구경별 기본요금, 자동납부 할인 계산 때문에 수도요금 정리가 번거로우셨다면 이 파일을 써 보세요. 고지서와 금액이 맞는지도 자동으로 확인해 드립니다.",
     features: [
@@ -119,7 +119,7 @@ window.EXCEL_POSTS = [
     title: "시설 이력카드 관리",
     category: "이력 관리",
     type: "엑셀 (.xlsm)",
-    img: "facility-card.jpg",
+    img: "facility-card.jpg", imgs: ["facility-card.jpg"],
     summary: "설비마다 한 장씩 이력카드를 만들고, 부서→공구→위치 3단계 찾기와 통합검색으로 고장·수리 이력을 바로 찾는 파일",
     intro: "어느 설비가 언제 고장 나서 어떻게 고쳤는지, 수첩이나 여러 파일에 흩어져 있지 않으신가요? 설비마다 이력카드 한 장으로 정리하고, 필요할 때 몇 번의 클릭으로 찾아보세요.",
     features: [
@@ -137,7 +137,7 @@ window.EXCEL_POSTS = [
     title: "공기구 이력카드 관리 (입출고·수량 자동)",
     category: "이력 관리",
     type: "엑셀 (.xlsm)",
-    img: "tool-card.jpg",
+    img: "tool-card.jpg", imgs: ["tool-card.jpg"],
     summary: "공구·장비마다 사진이 들어간 이력카드를 만들고, 입출고만 적으면 현재 수량과 고장·A/S 이력이 자동 정리되는 파일",
     intro: "공구실 장비가 몇 개 남았는지, 누가 가져갔는지, A/S는 어디에 맡겼는지 매번 확인하기 어려우셨죠. 카드 한 장에 사진·수량·고장 이력을 모두 담아 관리합니다.",
     features: [
@@ -155,7 +155,7 @@ window.EXCEL_POSTS = [
     title: "안전관리자 선해임·인원 관리 (PC 프로그램)",
     category: "인원 관리",
     type: "PC 프로그램 (크롬·엣지)",
-    img: "staff-manager.jpg",
+    img: "staff-manager.jpg", imgs: ["staff-manager.jpg"], mock: true,
     summary: "선임 현황·공석, 교육·자격증 기한, 연차, 당직 근무표, 업무 달력, 업체 연락망을 파일 하나로 관리하는 PC 프로그램",
     intro: "설치가 필요 없는 PC 프로그램입니다. 파일을 크롬이나 엣지로 열기만 하면 바로 쓸 수 있고, 자료는 내 PC에만 저장됩니다. 선임 기한, 교육 기한, 당직 순번을 더 이상 따로 챙기지 않아도 됩니다.",
     features: [
