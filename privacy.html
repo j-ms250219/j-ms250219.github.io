@@ -7,35 +7,35 @@
 <meta name="description" content="힘내라 안전관리자 앱과 himnaeja.kr 홈페이지의 개인정보처리방침">
 <link rel="icon" href="icon.png">
 <style>
-:root{--navy:#14253d;--navy2:#1f3a5f;--orange:#f28c1c;--ink:#16202c;--sub:#5d6877;--bg:#f5f6f8;--card:#fff;--line:#e4e8ee}
+:root{--ink:#000;--sub:#5c5c5c;--bg:#fff;--card:#f2f2f2;--line:#e3e3e3}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all}
-a{color:var(--navy2)}
-.wrap{max-width:820px;margin:0 auto;padding:0 16px}
-.top{position:sticky;top:0;z-index:5;background:var(--navy);color:#fff}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:var(--ink)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:10px;height:56px}
-.top img{width:30px;height:30px;border-radius:8px}
-.top a{color:#fff;text-decoration:none}
-.top b{font-size:16px}
-.top .back{margin-left:auto;font-size:14px;font-weight:700;background:rgba(255,255,255,.12);padding:6px 12px;border-radius:99px}
-.head{background:linear-gradient(160deg,var(--navy) 0,#1d3757 100%);color:#fff;padding:30px 0 34px}
-.head h1{margin:0 0 6px;font-size:28px;letter-spacing:-.5px}
-.head p{margin:0;opacity:.8;font-size:15px}
-main{padding:24px 0 50px}
-.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 10px;margin-bottom:14px}
-.sum{background:#eef4fb;border-color:#cfdced}
-h2{font-size:18px;margin:0 0 10px;letter-spacing:-.3px;display:flex;gap:8px;align-items:baseline}
-h2 span{color:var(--orange);font-size:15px}
+.top img{width:28px;height:28px;border-radius:6px}
+.top a{text-decoration:none}
+.top b{font-size:15px;font-weight:800}
+.top .back{margin-left:auto;font-size:14px;font-weight:700;border-bottom:1px solid var(--ink)}
+.head{padding:34px 0 20px;border-bottom:2px solid var(--ink)}
+.head h1{margin:0 0 6px;font-size:34px;letter-spacing:-.04em;font-weight:900}
+.head p{margin:0;color:var(--sub);font-size:14px}
+main{padding:20px 0 50px}
+.box{border-bottom:1px solid var(--line);padding:22px 0 10px}
+.sum{background:var(--card);padding:18px 18px 8px;border:0}
+h2{font-size:18px;margin:0 0 10px;letter-spacing:-.3px;display:flex;gap:8px;align-items:baseline;font-weight:800}
+h2 span{color:var(--sub);font-size:15px}
 ul{margin:0 0 12px;padding-left:20px}li{margin:4px 0}
 p{margin:0 0 12px}
 table{width:100%;border-collapse:collapse;font-size:14px;margin-bottom:14px}
 th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
-th{background:#f1f4f8;width:30%}
-.toc{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
-.toc a{font-size:13px;background:#fff;border:1px solid var(--line);border-radius:99px;padding:4px 10px;text-decoration:none;color:var(--ink)}
-footer{background:#0e1a2b;color:#9fb0c6;font-size:14px;padding:26px 0}
-footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px}
-footer a{color:#9fb0c6;text-decoration:none}
+th{background:var(--card);width:30%}
+.toc{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0 0 12px}
+.toc a{font-size:13px;text-decoration:none;border-bottom:1px solid var(--line)}
+footer{border-top:1px solid var(--line);color:var(--sub);font-size:13px;padding:22px 0 34px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px}
+footer a{color:var(--sub);text-decoration:none}
 </style>
 </head>
 <body>
@@ -79,7 +79,7 @@ footer a{color:#9fb0c6;text-decoration:none}
     <tr><th>현장·점검 정보</th><td>현장명, 건물명, 동·층·호수, 점검 결과, 특이사항</td></tr>
     <tr><th>서명</th><td>점검자 서명, 세대·참석자 서명, 대리인 관계 표시</td></tr>
     <tr><th>사람 명단</th><td>교육·점검 명단의 이름, 소속, 전화번호 등 사용자가 입력한 내용</td></tr>
-    <tr><th>사진</th><td>현장노트 카메라로 찍거나 갤러리에서 불러온 사진, 사진대지</td></tr>
+    <tr><th>사진</th><td>현장 사진·메모로 찍거나 갤러리에서 불러온 사진, 사진대지</td></tr>
     <tr><th>관리 기능</th><td>선임 현황, 교육·자격증 기한, 달력·업무 기록, 업체 연락처 등</td></tr>
   </table>
 </div>
@@ -112,7 +112,7 @@ footer a{color:#9fb0c6;text-decoration:none}
 <div class="box" id="a6">
   <h2><span>6.</span> 앱이 사용하는 권한</h2>
   <table>
-    <tr><th>카메라·사진 고르기</th><td>현장노트 카메라로 사진을 찍거나, 갤러리·파일에서 사진·PDF 양식을 불러올 때</td></tr>
+    <tr><th>카메라·사진 고르기</th><td>현장 사진·메모로 사진을 찍거나, 갤러리·파일에서 사진·PDF 양식을 불러올 때</td></tr>
     <tr><th>사진·파일 저장</th><td>서명 문서, 사진, 사진대지를 문서 폴더와 갤러리에 저장할 때</td></tr>
     <tr><th>인터넷</th><td>광고를 불러올 때</td></tr>
   </table>
@@ -169,7 +169,7 @@ footer a{color:#9fb0c6;text-decoration:none}
 </div></main>
 
 <footer><div class="wrap">
-  <b style="color:#fff">힘내라 안전관리자</b>
+  <b style="color:#000">힘내라 안전관리자</b>
   <a href="mailto:asdv7609@gmail.com">문의 asdv7609@gmail.com</a>
   <a href="./">홈으로</a>
   <span>© 2026 힘내라안전관리자</span>

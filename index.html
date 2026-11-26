@@ -3,192 +3,161 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>힘내라 안전관리자 — 현장 안전관리자의 앱과 자동화 엑셀</title>
+<title>힘내라 안전관리자 — 전자서명·사진대지, 폰 하나로</title>
 <meta name="description" content="현장에서 일하는 안전관리자가 직접 만든 앱 '힘내라 안전관리자'와 현장 업무용 자동화 엑셀 자료실.">
 <meta property="og:title" content="힘내라 안전관리자">
 <meta property="og:description" content="현장 안전관리자가 직접 만든 앱과 자동화 엑셀">
 <meta property="og:image" content="icon.png">
 <link rel="icon" href="icon.png">
 <style>
-:root{--navy:#14253d;--navy2:#1f3a5f;--orange:#f28c1c;--green:#1f8a4c;--ink:#16202c;--sub:#5d6877;--bg:#f5f6f8;--card:#fff;--line:#e4e8ee}
+:root{--ink:#000;--sub:#6b6b6b;--bg:#fff;--card:#f2f2f2;--line:#e3e3e3;--red:#e30613}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;word-break:keep-all}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all}
 a{color:inherit}
 button{font:inherit}
-.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
 
 /* 위 막대 + 탭 */
-.top{position:sticky;top:0;z-index:5;background:var(--navy);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
 .top .row{display:flex;align-items:center;gap:10px;height:56px}
-.top img{width:30px;height:30px;border-radius:8px}
-.top b{font-size:16px;letter-spacing:-.2px}
-.top .mail{margin-left:auto;font-size:13px;opacity:.8;text-decoration:none}
-@media(max-width:560px){.top .mail{display:none}}
-.tabs{display:flex;gap:4px}
-.tabs a{flex:0 0 auto;padding:10px 18px 12px;text-decoration:none;font-weight:800;font-size:15px;color:#b9c6d8;border-bottom:3px solid transparent}
-.tabs a.on{color:#fff;border-bottom-color:var(--orange)}
-@media(max-width:560px){.tabs a{flex:1;text-align:center}}
+.top img{width:28px;height:28px;border-radius:6px}
+.top b{font-size:15px;font-weight:800;letter-spacing:-.3px}
+.tabs{margin-left:auto;display:flex;gap:18px}
+.tabs a{text-decoration:none;font-size:14px;color:var(--sub);padding:4px 0;border-bottom:2px solid transparent}
+.tabs a.on{color:var(--ink);font-weight:800;border-bottom-color:var(--ink)}
 
-/* 소개 머리말 */
-.intro{background:linear-gradient(160deg,var(--navy) 0,#1d3757 100%);color:#fff;padding:34px 0 40px}
-.intro h1{margin:0 0 6px;font-size:28px;letter-spacing:-.6px;line-height:1.3}
-.intro h1 em{font-style:normal;color:var(--orange)}
-.intro p{margin:0;opacity:.82;font-size:16px}
-.page{display:none;padding:26px 0 60px}
+/* 첫 화면: 핵심 메시지 + 버튼 하나 */
+.first{min-height:calc(100vh - 57px);min-height:calc(100svh - 57px);display:flex;flex-direction:column;justify-content:center;padding:36px 0 40px}
+.msg{margin:0;font-weight:900;letter-spacing:-.045em;line-height:1.18;font-size:clamp(46px,13vw,104px)}
+.msg span{display:block;border-top:2px solid var(--ink);padding:14px 0 16px}
+.go{display:block;text-align:center;background:var(--red);color:#fff;font-size:17px;font-weight:800;padding:18px;margin-top:34px;text-decoration:none;max-width:520px}
+.go small{font-weight:600;opacity:.85;margin-left:6px}
+
+/* 그 아래 내용: 작고 차분하게 */
+.low{border-top:1px solid var(--line);padding:30px 0}
+.eb{font-size:15px;color:var(--sub);margin:0}
+.eb b{display:block;color:var(--ink);font-size:16px;margin-bottom:6px}
+.page{display:none}
 .page.on{display:block}
-h2{font-size:20px;margin:0 0 12px;letter-spacing:-.3px;display:flex;align-items:center;gap:8px}
-h2 small{font-size:13px;color:var(--sub);font-weight:600}
+h2{font-size:18px;font-weight:800;margin:0 0 10px;letter-spacing:-.3px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:13px;color:var(--sub);font-weight:500}
+.feats{font-size:14px;color:var(--sub);margin:0 0 14px}
+.shots{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px}
+.shots img{height:300px;border:1px solid var(--line);flex:0 0 auto}
+.more{display:inline-block;margin-top:14px;font-size:14px;font-weight:700;text-decoration:none;border-bottom:1px solid var(--ink)}
+.soon{display:flex;gap:10px;margin-top:18px}
+.soon div{flex:1;border:1px solid var(--line);padding:12px;font-size:13px;color:var(--sub)}
 
-/* 앱 카드 */
-.appcard{display:grid;grid-template-columns:auto 1fr;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 6px 18px rgba(20,37,61,.06)}
-.appcard .ic{width:96px;height:96px;border-radius:22px;box-shadow:0 6px 14px rgba(0,0,0,.18)}
-.appcard h3{margin:0;font-size:22px;letter-spacing:-.4px}
-.badge{display:inline-block;font-size:12px;font-weight:800;padding:3px 10px;border-radius:99px;vertical-align:middle}
-.b-test{background:#fff2e3;color:#c45a00;border:1px solid #f6c48a}
-.b-soon{background:#eef1f5;color:#5d6877;border:1px solid #d9dee6}
-.b-ready{background:#e6f5ec;color:var(--green);border:1px solid #a8dcbc}
-.appcard p{margin:6px 0 12px;color:var(--sub)}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.chips span{font-size:13px;background:#f1f4f8;border-radius:99px;padding:4px 11px;font-weight:700;color:#38475a}
-.btns{display:flex;flex-wrap:wrap;gap:8px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 18px;border-radius:12px;font-weight:800;text-decoration:none;font-size:15px;border:0;cursor:pointer}
-.btn.main{background:var(--orange);color:#fff}
-.btn.navy{background:var(--navy2);color:#fff}
-.btn.line{background:#fff;border:1px solid var(--line);color:var(--ink)}
-.btn.off{background:#e9edf2;color:#8a95a3;cursor:default}
-.shots{display:flex;gap:10px;overflow-x:auto;margin-top:18px;padding-bottom:4px;grid-column:1/-1}
-.shots img{height:220px;border-radius:14px;border:1px solid var(--line);flex:0 0 auto}
-@media(max-width:560px){.appcard{grid-template-columns:1fr}.appcard .ic{width:76px;height:76px;border-radius:18px}.shots img{height:190px}}
-
-.soon{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:30px}
-.soon .card{border:2px dashed #cfd6e0;border-radius:18px;padding:22px;text-align:center;color:var(--sub);background:transparent}
-.soon .card .q{width:56px;height:56px;margin:0 auto 10px;border-radius:16px;background:#e9edf2;display:flex;align-items:center;justify-content:center;font-size:26px;color:#9aa5b3;font-weight:900}
-.soon .card b{display:block;color:var(--ink);font-size:16px}
-
-/* 게시판 (사진 카드) */
-.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
-.pcard{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;box-shadow:0 4px 14px rgba(20,37,61,.05)}
-.pcard:hover{box-shadow:0 8px 22px rgba(20,37,61,.12)}
-.pcard .th{aspect-ratio:16/10;background:#e9edf2;overflow:hidden}
+/* 자동화 엑셀 (사진 카드) */
+.custom{font-size:14px;color:var(--sub);margin:0 0 16px}
+.custom b{color:var(--ink)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:3px}
+.pcard{background:var(--card);text-decoration:none;display:flex;flex-direction:column}
+.pcard .th{aspect-ratio:16/10;background:#e9e9e9;overflow:hidden}
 .pcard .th img{width:100%;height:100%;object-fit:cover;object-position:left top;display:block}
-.pcard .tx{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
-.pcard b{font-size:17px;letter-spacing:-.3px;line-height:1.35}
-.pcard p{margin:0;color:var(--sub);font-size:14px;line-height:1.5}
-.pcard .ft{margin-top:auto;padding-top:6px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--sub)}
-.cat{display:inline-block;font-size:12px;font-weight:800;background:#e8eef7;color:var(--navy2);border-radius:6px;padding:2px 8px}
-.custom{background:#fff4e6;border:1px solid #f6c48a;border-radius:14px;padding:14px 16px;margin-bottom:16px;display:flex;gap:10px;align-items:flex-start;font-size:15px}
-.custom b{color:#c45a00}
+.pcard .tx{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
+.pcard b{font-size:16px;letter-spacing:-.3px;line-height:1.35}
+.pcard p{margin:0;color:var(--sub);font-size:13px;line-height:1.5}
+.pcard .ft{margin-top:auto;padding-top:6px;font-size:12px;color:var(--sub)}
+.cat{font-size:12px;font-weight:700;color:var(--sub)}
+.badge{display:none}
 
 /* 글 보기 */
-.post{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
-.post .back{display:inline-block;margin-bottom:12px;font-weight:800;text-decoration:none;color:var(--navy2);font-size:14px}
-.post h3{margin:8px 0 4px;font-size:24px;letter-spacing:-.5px;line-height:1.3}
+.post{padding-top:6px}
+.post .back{display:inline-block;margin-bottom:12px;font-weight:700;text-decoration:none;font-size:14px;border-bottom:1px solid var(--ink)}
+.post h3{margin:6px 0 2px;font-size:26px;letter-spacing:-.6px;line-height:1.3;font-weight:900}
 .post .info{color:var(--sub);font-size:13px;margin-bottom:14px}
-.post .shot{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:6px 0 4px}
+.post .shot{border:1px solid var(--line);margin:6px 0 4px}
 .post .shot img{width:100%;display:block}
 .post .cap{font-size:12px;color:var(--sub);margin-bottom:14px}
 .post .lead{font-size:16px;margin:0 0 6px}
-.post h4{margin:22px 0 8px;font-size:17px}
+.post h4{margin:22px 0 8px;font-size:16px;font-weight:800}
 .feat{list-style:none;margin:0;padding:0}
-.feat li{position:relative;padding:8px 0 8px 30px;border-bottom:1px dashed var(--line)}
-.feat li:before{content:"✓";position:absolute;left:4px;top:8px;width:20px;height:20px;border-radius:6px;background:var(--green);color:#fff;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center}
-.who{display:flex;flex-wrap:wrap;gap:6px}.who span{background:#f1f4f8;border-radius:99px;padding:5px 12px;font-size:14px;font-weight:700}
-.buy{margin-top:22px;border-radius:14px;background:linear-gradient(135deg,#1f3a5f,#14253d);color:#fff;padding:18px}
-.buy b{font-size:18px}.buy p{margin:6px 0 12px;color:#c6d2e2;font-size:14px}
-.buy .addr{font-size:18px;font-weight:800;word-break:break-all;margin-bottom:10px}
-.buy .btn.line{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.feat li{padding:8px 0;border-bottom:1px solid var(--line)}
+.who{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:var(--sub)}
+.post .custom{margin:20px 0 0;padding:14px 0;border-top:2px solid var(--ink)}
+.post .custom span{display:none}
+.buy{margin-top:16px;background:var(--card);padding:18px}
+.buy b{font-size:17px}.buy p{margin:6px 0 10px;color:var(--sub);font-size:14px}
+.buy .addr{font-size:17px;font-weight:800;word-break:break-all;margin-bottom:10px}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;font-weight:800;text-decoration:none;font-size:14px;border:0;cursor:pointer;background:var(--ink);color:#fff}
+.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink)}
 
 /* 문의 */
-.ask{margin-top:26px;background:var(--navy);color:#fff;border-radius:18px;padding:24px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
-.ask h2{color:#fff;margin:0 0 4px}
-.ask p{margin:0;color:#c6d2e2;font-size:15px}
-.ask .addr{font-size:18px;font-weight:800;color:#fff;word-break:break-all}
-.ask .btns .btn.line{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
-.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#16202c;color:#fff;padding:10px 18px;border-radius:99px;font-size:14px;opacity:0;transition:.25s;pointer-events:none}
+.ask{border-top:1px solid var(--line);margin-top:30px;padding:26px 0}
+.ask p{margin:0 0 6px;color:var(--sub);font-size:14px}
+.ask .addr{font-size:17px;font-weight:800;word-break:break-all;margin-bottom:12px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#000;color:#fff;padding:10px 18px;font-size:14px;opacity:0;transition:.25s;pointer-events:none}
 .toast.on{opacity:1}
 
-footer{background:#0e1a2b;color:#9fb0c6;font-size:14px;padding:28px 0}
-footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center}
+footer{border-top:1px solid var(--line);color:var(--sub);font-size:13px;padding:22px 0 34px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
 footer a{text-decoration:none}
 footer .sp{margin-left:auto}
+@media(min-width:760px){.shots img{height:380px}}
 </style>
 </head>
 <body>
-<div class="top">
-  <div class="wrap row">
-    <img src="icon.png" alt=""><b>힘내라 안전관리자</b>
-    <a class="mail" href="mailto:asdv7609@gmail.com">asdv7609@gmail.com</a>
-  </div>
-  <div class="wrap tabs">
-    <a href="#app" data-tab="app">📱 앱</a>
-    <a href="#excel" data-tab="excel">📊 자동화 엑셀</a>
-  </div>
-</div>
-
-<div class="intro"><div class="wrap">
-  <h1>현장에서 일하는 사람이 <em>직접 만든</em><br>안전관리 도구</h1>
-  <p>매일 현장에서 쓰려고 만든 앱과 업무 자동화 엑셀을 소개해요.</p>
+<div class="top"><div class="wrap row">
+  <img src="icon.png" alt=""><b>힘내라 안전관리자</b>
+  <nav class="tabs"><a href="#app" data-tab="app">앱</a><a href="#excel" data-tab="excel">자동화 엑셀</a></nav>
 </div></div>
 
 <!-- ====== 앱 탭 ====== -->
 <main class="page" id="p-app"><div class="wrap">
-  <h2>앱 <small>Android</small></h2>
-  <div class="appcard">
-    <img class="ic" src="icon.png" alt="힘내라 안전관리자 아이콘">
-    <div>
-      <h3>힘내라 안전관리자 <span class="badge b-test">테스트 중</span></h3>
-      <p>점검 동의서·교육 명단 전자서명, 현장노트 카메라와 사진대지, 선임·교육·업무 관리까지 폰 하나로.</p>
-      <div class="chips"><span>전자서명</span><span>사진대지</span><span>서명 현황판</span><span>선임·교육</span><span>달력·당직</span></div>
-      <div class="btns">
-        <a class="btn navy" href="app.html">자세히 보기</a>
-        <span class="btn off">Google Play 출시 예정</span>
-      </div>
-    </div>
+  <section class="first">
+    <h1 class="msg"><span>전자서명·</span><span>사진대지,</span><span>폰 하나로.</span></h1>
+    <a class="go" href="app.html#download">Google Play<small>출시 예정</small></a>
+  </section>
+
+  <section class="low">
+    <p class="eb"><b>점검 동의서·교육 명단 전자서명, 현장 사진·메모와 사진대지, 선임·교육·업무 관리까지 폰 하나로.</b>
+    현장에서 일하는 사람이 직접 만든 안전관리 도구예요. 매일 현장에서 쓰려고 만든 앱과 업무 자동화 엑셀을 소개해요.</p>
+  </section>
+
+  <section class="low">
+    <h2>힘내라 안전관리자 <small>Android</small></h2>
+    <p class="feats">전자서명 · 사진대지 · 서명 현황판 · 선임·교육 · 달력·당직</p>
     <div class="shots">
       <img src="img/home.jpg" alt="첫 화면" loading="lazy">
       <img src="img/sign.jpg" alt="서명 화면" loading="lazy">
-      <img src="img/note.jpg" alt="현장노트 카메라" loading="lazy">
+      <img src="img/note.jpg" alt="현장 사진·메모" loading="lazy">
       <img src="img/sheet.jpg" alt="사진대지" loading="lazy">
       <img src="img/cal.jpg" alt="달력" loading="lazy">
     </div>
-  </div>
-
-  <div class="soon">
-    <div class="card"><div class="q">?</div><b>다음 앱</b>출시 예정</div>
-    <div class="card"><div class="q">?</div><b>다음 앱</b>출시 예정</div>
-  </div>
+    <a class="more" href="app.html">자세히 보기</a>
+    <div class="soon"><div>다음 앱 · 출시 예정</div><div>다음 앱 · 출시 예정</div></div>
+  </section>
 </div></main>
 
 <!-- ====== 자동화 엑셀 탭 ====== -->
-<main class="page" id="p-excel"><div class="wrap">
+<main class="page" id="p-excel"><div class="wrap" style="padding-top:28px">
   <div id="excel-list">
     <h2>자동화 엑셀 자료실 <small id="cnt"></small></h2>
-    <div class="custom"><span style="font-size:20px">🛠</span><div><b>현장에 맞게 커스텀 제작 가능</b><br>항목·양식·결재란·보고서 모양을 쓰시는 현장에 맞게 고쳐 드려요. 원하시는 내용을 메일로 보내 주세요.</div></div>
+    <p class="custom"><b>현장에 맞게 커스텀 제작 가능</b> — 항목·양식·결재란·보고서 모양을 쓰시는 현장에 맞게 고쳐 드려요. 원하시는 내용을 메일로 보내 주세요.</p>
     <div class="pgrid" id="rows"></div>
   </div>
   <div id="excel-post" class="post" style="display:none"></div>
-
-  <div class="ask" id="ask">
-    <div>
-      <h2>구입 · 커스텀 문의</h2>
-      <p>자료 구입, 가격, 현장에 맞춘 수정(커스텀) 제작은 메일로 문의해 주세요.</p>
-      <div class="addr">asdv7609@gmail.com</div>
-    </div>
-    <div class="btns">
-      <a class="btn main" href="mailto:asdv7609@gmail.com?subject=%5B%ED%9E%98%EB%82%B4%EB%9D%BC%20%EC%95%88%EC%A0%84%EA%B4%80%EB%A6%AC%EC%9E%90%5D%20%EA%B5%AC%EC%9E%85%20%EB%AC%B8%EC%9D%98">메일 쓰기</a>
-      <button class="btn line" type="button" id="copy">주소 복사</button>
-    </div>
-  </div>
 </div></main>
 
+<div class="wrap"><div class="ask" id="ask">
+  <h2>구입 · 커스텀 문의</h2>
+  <p>자료 구입, 가격, 현장에 맞춘 수정(커스텀) 제작은 메일로 문의해 주세요.</p>
+  <div class="addr">asdv7609@gmail.com</div>
+  <div class="btns">
+    <a class="btn" href="mailto:asdv7609@gmail.com?subject=%5B%ED%9E%98%EB%82%B4%EB%9D%BC%20%EC%95%88%EC%A0%84%EA%B4%80%EB%A6%AC%EC%9E%90%5D%20%EA%B5%AC%EC%9E%85%20%EB%AC%B8%EC%9D%98">메일 쓰기</a>
+    <button class="btn line" type="button" id="copy">주소 복사</button>
+  </div>
+</div></div>
+
 <footer><div class="wrap">
-  <b style="color:#fff">힘내라 안전관리자</b>
+  <b style="color:#000">힘내라 안전관리자</b>
   <a href="mailto:asdv7609@gmail.com">문의 asdv7609@gmail.com</a>
   <a href="privacy.html">개인정보처리방침</a>
   <span class="sp">© 2026 힘내라안전관리자</span>
 </div></footer>
 <div class="toast" id="toast">메일 주소를 복사했어요</div>
-
 <script src="excel/posts.js"></script>
 <script>
 (function(){
@@ -205,7 +174,7 @@ footer .sp{margin-left:auto}
     return '<a class="pcard" href="#excel/'+encodeURIComponent(p.id)+'">'+
       '<div class="th"><img src="excel/img/'+esc(p.img)+'" alt="'+esc(p.title)+' 화면" loading="lazy"></div>'+
       '<div class="tx"><div><span class="cat">'+esc(p.category)+'</span></div><b>'+esc(p.title)+'</b><p>'+esc(p.summary)+'</p>'+
-      '<div class="ft"><span>'+esc(p.type)+'</span><span class="badge b-test">구입 문의</span></div></div></a>';
+      '<div class="ft">'+esc(p.type)+' · 구입 문의</div></div></a>';
   }).join('');
 
   // 글 보기
@@ -222,9 +191,9 @@ footer .sp{margin-left:auto}
       '<p class="lead">'+esc(p.intro)+'</p>'+
       '<h4>대표 기능</h4><ul class="feat">'+li(p.features)+'</ul>'+
       '<h4>이런 분께 추천해요</h4><div class="who">'+(p.forWho||[]).map(function(t){return '<span>'+esc(t)+'</span>';}).join('')+'</div>'+
-      '<div class="custom" style="margin:20px 0 0"><span style="font-size:20px">🛠</span><div><b>문의에 따라 커스텀 가능</b><br>항목 이름, 칸 구성, 결재란, 보고서 양식, 회사 로고 등 쓰시는 현장에 맞게 고쳐 드립니다. 필요한 내용을 메일로 알려 주세요.</div></div>'+
+      '<div class="custom"><div><b>문의에 따라 커스텀 가능</b><br>항목 이름, 칸 구성, 결재란, 보고서 양식, 회사 로고 등 쓰시는 현장에 맞게 고쳐 드립니다. 필요한 내용을 메일로 알려 주세요.</div></div>'+
       '<div class="buy"><b>구입 문의</b><p>가격·구입 방법·커스텀 견적은 아래 메일로 문의해 주세요. 메일 제목에 자료 이름을 적어 주시면 빨리 답장드려요.</p>'+
-      '<div class="addr">'+MAIL+'</div><div class="btns"><a class="btn main" href="'+mailto(p.title)+'">메일로 구입 문의</a><button class="btn line" type="button" data-copy>주소 복사</button></div></div>';
+      '<div class="addr">'+MAIL+'</div><div class="btns"><a class="btn" href="'+mailto(p.title)+'">메일로 구입 문의</a><button class="btn line" type="button" data-copy>주소 복사</button></div></div>';
     document.getElementById('excel-list').style.display='none';
     box.style.display='block';
   }
